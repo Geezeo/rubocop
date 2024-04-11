@@ -1,0 +1,192 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop/cop/internal_affairs
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.7
+  NewCops: disable
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - 'spec/smoke_tests/**/*.rb'
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle:
+    - key
+    - table
+  EnforcedColonStyle:
+    - key
+    - table
+
+Layout/LineLength:
+  Max: 80 # default: 120
+  AllowedPatterns:
+    - '^\s*# .*https?:\/\/.+\[.+\]\.?$' # Allow long asciidoc links
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Lint/InterpolationCheck:
+  Exclude:
+    - spec/**/*.rb
+
+# When the `edge-rubocop` build is red, and we decide to disable the cop,
+# the rest of the builds become red if the cop has not yet been released.
+# Instead of waiting for RuboCop releases to make `edge-rubocop` green,
+# we prefer keeping disable directives here and there and check if they
+# are still needed once in a while.
+Lint/RedundantCopDisableDirective:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - rubocop-rspec_rails.gemspec
+    - Rakefile
+    - '**/*.rake'
+
+Naming/FileName:
+  Exclude:
+    - lib/rubocop-rspec_rails.rb
+
+Naming/InclusiveLanguage:
+  Enabled: true
+  CheckStrings: true
+  FlaggedTerms:
+    ' a offense':
+      Suggestions:
+        - an offense
+    auto-correct:
+      Suggestions:
+        - autocorrect
+    auto_correct:
+      Suggestions:
+        - autocorrect
+    ' a violation':
+      Suggestions:
+        - an offense
+    behaviour:
+      Suggestions:
+        - behavior
+    offence:
+      Suggestions:
+        - offense
+    'does not registers':
+      Suggestions:
+        - does not register
+    violation:
+      Suggestions:
+        - offense
+
+RSpec:
+  Language:
+    Expectations:
+      - expect_correction
+      - expect_no_offenses
+      - expect_offense
+
+RSpec/ExampleLength:
+  CountAsOne:
+    - heredoc
+  Max: 11
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/project/**/*.rb
+
+RSpec/MultipleExpectations:
+  Max: 2
+
+Style/FormatStringToken:
+  Exclude:
+    - spec/rubocop/**/*.rb
+
+Style/RequireOrder:
+  Enabled: true
+
+# Enable some of RuboCop's pending cops.
+
+Layout/LineContinuationSpacing:
+  Enabled: true
+Layout/LineEndStringConcatenationIndentation:
+  Enabled: true
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: true
+Lint/NonAtomicFileOperation:
+  Enabled: true
+Style/EmptyHeredoc:
+  Enabled: true
+Style/RedundantHeredocDelimiterQuotes:
+  Enabled: true
+Style/RedundantStringEscape:
+  Enabled: true
+Style/ReturnNilInPredicateMethodDefinition:
+  Enabled: true
+
+# Enable pending rubocop-rspec cops.
+
+RSpec/BeEmpty:
+  Enabled: true
+RSpec/BeEq:
+  Enabled: true
+RSpec/BeNil:
+  Enabled: true
+RSpec/ChangeByZero:
+  Enabled: true
+RSpec/ClassCheck:
+  Enabled: true
+RSpec/ContainExactly:
+  Enabled: true
+RSpec/DuplicatedMetadata:
+  Enabled: true
+RSpec/EmptyMetadata:
+  Enabled: true
+RSpec/Eq:
+  Enabled: true
+RSpec/ExcessiveDocstringSpacing:
+  Enabled: true
+RSpec/IdenticalEqualityAssertion:
+  Enabled: true
+RSpec/IndexedLet:
+  Enabled: true
+RSpec/IsExpectedSpecify:
+  Enabled: true
+RSpec/MatchArray:
+  Enabled: true
+RSpec/MetadataStyle:
+  Enabled: true
+RSpec/NoExpectationExample:
+  Enabled: true
+RSpec/PendingWithoutReason:
+  Enabled: true
+RSpec/ReceiveMessages:
+  Enabled: true
+RSpec/RedundantAround:
+  Enabled: true
+RSpec/RedundantPredicateMatcher:
+  Enabled: true
+RSpec/RemoveConst:
+  Enabled: true
+RSpec/RepeatedSubjectCall:
+  Enabled: true
+RSpec/SkipBlockInsideExample:
+  Enabled: true
+RSpec/SortMetadata:
+  Enabled: true
+RSpec/SpecFilePathSuffix:
+  Enabled: true
+RSpec/SubjectDeclaration:
+  Enabled: true
+RSpec/VerifiedDoubleReference:
+  Enabled: true
