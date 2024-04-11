@@ -1,184 +1,83 @@
-AllCops:
-  DisplayCopNames: true
-  TargetRubyVersion: 2.7
-  NewCops: disable
-  Exclude:
-    - 'vendor/**/*'
-    - 'spec/fixtures/**/*'
-    - 'tmp/**/*'
-    - 'spec/smoke_tests/**/*.rb'
+---
+RSpecRails:
+  Enabled: true
+  DocumentationBaseURL: https://docs.rubocop.org/rubocop-rspec_rails
+  Include:
+    - "**/*_spec.rb"
+    - "**/spec/**/*"
 
-Layout/HashAlignment:
-  EnforcedHashRocketStyle:
-    - key
-    - table
-  EnforcedColonStyle:
-    - key
-    - table
+RSpecRails/AvoidSetupHook:
+  Description: Checks that tests use RSpec `before` hook over Rails `setup` method.
+  Enabled: pending
+  VersionAdded: '2.4'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/AvoidSetupHook
 
-Layout/LineLength:
-  Max: 80 # default: 120
-  AllowedPatterns:
-    - '^\s*# .*https?:\/\/.+\[.+\]\.?$' # Allow long asciidoc links
+RSpecRails/HaveHttpStatus:
+  Description: Checks that tests use `have_http_status` instead of equality matchers.
+  Enabled: pending
+  ResponseMethods:
+    - response
+    - last_response
+  SafeAutoCorrect: false
+  VersionAdded: '2.12'
+  VersionChanged: '2.27'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/HaveHttpStatus
 
-Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
+RSpecRails/HttpStatus:
+  Description: Enforces use of symbolic or numeric value to describe HTTP status.
+  Enabled: true
+  EnforcedStyle: symbolic
+  SupportedStyles:
+    - numeric
+    - symbolic
+    - be_status
+  VersionAdded: '1.23'
+  VersionChanged: '2.20'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/HttpStatus
 
-Layout/MultilineOperationIndentation:
-  EnforcedStyle: indented
+RSpecRails/InferredSpecType:
+  Description: Identifies redundant spec type.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '2.14'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/InferredSpecType
+  Inferences:
+    channels: channel
+    controllers: controller
+    features: feature
+    generator: generator
+    helpers: helper
+    jobs: job
+    mailboxes: mailbox
+    mailers: mailer
+    models: model
+    requests: request
+    integration: request
+    api: request
+    routing: routing
+    system: system
+    views: view
 
-Lint/InterpolationCheck:
-  Exclude:
-    - spec/**/*.rb
+RSpecRails/MinitestAssertions:
+  Description: Check if using Minitest-like matchers.
+  Enabled: pending
+  VersionAdded: '2.17'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/MinitestAssertions
 
-# When the `edge-rubocop` build is red, and we decide to disable the cop,
-# the rest of the builds become red if the cop has not yet been released.
-# Instead of waiting for RuboCop releases to make `edge-rubocop` green,
-# we prefer keeping disable directives here and there and check if they
-# are still needed once in a while.
-Lint/RedundantCopDisableDirective:
-  Enabled: false
+RSpecRails/NegationBeValid:
+  Description: Enforces use of `be_invalid` or `not_to` for negated be_valid.
+  Safe: false
+  EnforcedStyle: not_to
+  SupportedStyles:
+    - not_to
+    - be_invalid
+  Enabled: pending
+  VersionAdded: '2.23'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/NegationBeValid
 
-Metrics/BlockLength:
-  Exclude:
-    - rubocop-rspec_rails.gemspec
-    - Rakefile
-    - '**/*.rake'
-
-Naming/FileName:
-  Exclude:
-    - lib/rubocop-rspec_rails.rb
-
-Naming/InclusiveLanguage:
-  Enabled: true
-  CheckStrings: true
-  FlaggedTerms:
-    ' a offense':
-      Suggestions:
-        - an offense
-    auto-correct:
-      Suggestions:
-        - autocorrect
-    auto_correct:
-      Suggestions:
-        - autocorrect
-    ' a violation':
-      Suggestions:
-        - an offense
-    behaviour:
-      Suggestions:
-        - behavior
-    offence:
-      Suggestions:
-        - offense
-    'does not registers':
-      Suggestions:
-        - does not register
-    violation:
-      Suggestions:
-        - offense
-
-RSpec:
-  Language:
-    Expectations:
-      - expect_correction
-      - expect_no_offenses
-      - expect_offense
-
-RSpec/ExampleLength:
-  CountAsOne:
-    - heredoc
-  Max: 11
-
-RSpec/FilePath:
-  Enabled: false
-
-RSpec/DescribeClass:
-  Exclude:
-    - spec/project/**/*.rb
-
-RSpec/MultipleExpectations:
-  Max: 2
-
-Style/FormatStringToken:
-  Exclude:
-    - spec/rubocop/**/*.rb
-
-Style/RequireOrder:
-  Enabled: true
-
-# Enable some of RuboCop's pending cops.
-
-Layout/LineContinuationSpacing:
-  Enabled: true
-Layout/LineEndStringConcatenationIndentation:
-  Enabled: true
-Lint/AmbiguousOperatorPrecedence:
-  Enabled: true
-Lint/NonAtomicFileOperation:
-  Enabled: true
-Style/EmptyHeredoc:
-  Enabled: true
-Style/RedundantHeredocDelimiterQuotes:
-  Enabled: true
-Style/RedundantStringEscape:
-  Enabled: true
-Style/ReturnNilInPredicateMethodDefinition:
-  Enabled: true
-
-# Enable pending rubocop-rspec cops.
-
-RSpec/BeEmpty:
-  Enabled: true
-RSpec/BeEq:
-  Enabled: true
-RSpec/BeNil:
-  Enabled: true
-RSpec/ChangeByZero:
-  Enabled: true
-RSpec/ClassCheck:
-  Enabled: true
-RSpec/ContainExactly:
-  Enabled: true
-RSpec/DuplicatedMetadata:
-  Enabled: true
-RSpec/EmptyMetadata:
-  Enabled: true
-RSpec/Eq:
-  Enabled: true
-RSpec/ExcessiveDocstringSpacing:
-  Enabled: true
-RSpec/IdenticalEqualityAssertion:
-  Enabled: true
-RSpec/IndexedLet:
-  Enabled: true
-RSpec/IsExpectedSpecify:
-  Enabled: true
-RSpec/MatchArray:
-  Enabled: true
-RSpec/MetadataStyle:
-  Enabled: true
-RSpec/NoExpectationExample:
-  Enabled: true
-RSpec/PendingWithoutReason:
-  Enabled: true
-RSpec/ReceiveMessages:
-  Enabled: true
-RSpec/RedundantAround:
-  Enabled: true
-RSpec/RedundantPredicateMatcher:
-  Enabled: true
-RSpec/RemoveConst:
-  Enabled: true
-RSpec/RepeatedSubjectCall:
-  Enabled: true
-RSpec/SkipBlockInsideExample:
-  Enabled: true
-RSpec/SortMetadata:
-  Enabled: true
-RSpec/SpecFilePathSuffix:
-  Enabled: true
-RSpec/SubjectDeclaration:
-  Enabled: true
-RSpec/VerifiedDoubleReference:
-  Enabled: true
+RSpecRails/TravelAround:
+  Description: Prefer to travel in `before` rather than `around`.
+  Enabled: pending
+  Safe: false
+  VersionAdded: '2.19'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec_rails/RuboCop/Cop/RSpecRails/TravelAround

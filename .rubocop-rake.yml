@@ -1,52 +1,30 @@
-AllCops:
-  NewCops: enable
-  TargetRubyVersion: 2.5
+Rake:
+  Enabled: true
+  Include:
+    - 'Rakefile'
+    - '**/*.rake'
 
-InternalAffairs/NodeMatcherDirective:
-  Enabled: false
+Rake/ClassDefinitionInTask:
+  Description: 'Do not define a class or module in rake task, because it will be defined to the top level.'
+  Enabled: true
+  VersionAdded: '0.3.0'
 
-Layout/LineLength:
-  Enabled: false
+Rake/Desc:
+  Description: 'Describe the task with `desc` method.'
+  Enabled: true
+  VersionAdded: '0.1.0'
 
-Metrics:
-  Enabled: false
+Rake/DuplicateNamespace:
+  Description: 'Do not define namespace with the same name'
+  Enabled: true
+  VersionAdded: '0.5.0'
 
-Style/StringLiterals:
-  Enabled: false
+Rake/DuplicateTask:
+  Description: 'Do not define tasks with the same name'
+  Enabled: true
+  VersionAdded: '0.4.0'
 
-Style/AccessModifierDeclarations:
-  EnforcedStyle: inline
-
-Style/NumericPredicate:
-  Enabled: false
-
-Style/RedundantPercentQ:
-  Exclude:
-    - '*.gemspec'
-
-Style/ModuleFunction:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - '*.gemspec'
-
-Style/TrailingCommaInArguments:
-  EnforcedStyleForMultiline: comma
-
-Naming/FileName:
-  Exclude:
-    - 'lib/rubocop-rake.rb'
-
-RSpec:
-  Language:
-    Expectations:
-      - expect_correction
-      - expect_no_offenses
-      - expect_offense
-
-RSpec/ExampleLength:
-  Enabled: false
+Rake/MethodDefinitionInTask:
+  Description: 'Do not define a method in rake task, because it will be defined to the top level.'
+  Enabled: true
+  VersionAdded: '0.2.0'
