@@ -1,10 +1,10 @@
 # .rubocop.yml
 inherit_from:
-  - https://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@raw.githubusercontent.com/Geezeo/rubocop/main/.rubocop-rspec_rails.yml
-  - https://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@raw.githubusercontent.com/Geezeo/rubocop/main/.rubocop-rspec.yml
-  - https://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@raw.githubusercontent.com/Geezeo/rubocop/main/.rubocop-rake.yml
-  - https://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@raw.githubusercontent.com/Geezeo/rubocop/main/.rubocop-rails.yml
-  - https://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@raw.githubusercontent.com/Geezeo/rubocop/main/.rubocop-performance.yml
+  - https://raw.githubusercontent.com/Geezeo/rubocop/develop/.rubocop-rspec_rails.yml
+  - https://raw.githubusercontent.com/Geezeo/rubocop/develop/.rubocop-rspec.yml
+  - https://raw.githubusercontent.com/Geezeo/rubocop/develop/.rubocop-rake.yml
+  - https://raw.githubusercontent.com/Geezeo/rubocop/develop/.rubocop-rails.yml
+  - https://raw.githubusercontent.com/Geezeo/rubocop/develop/.rubocop-performance.yml
 
 require:
   - rubocop-factory_bot
