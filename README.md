@@ -14,6 +14,11 @@ To use these configurations in your project, add this line to your project's Gem
 
 ```ruby
 gem 'rubocop', require: false
+gem 'rubocop-factory_bot', require: false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false
+gem 'rubocop-rspec', require: false
+gem 'rubocop-rspec_rails', require: false
 
 ```
 
@@ -22,6 +27,18 @@ Then, add a .rubocop.yml file to your project's root directory with the followin
 ```
 inherit_from:
   - https://raw.githubusercontent.com/Geezeo/rubocop/develop/.rubocop.yml
+```
+
+Initially, there will be an incredible amount of violations. To create a TODO list that we can slowly resolve, in the command line:
+```bash
+rubocop --auto-gen-config
+```
+
+### Running Rubocop
+Rubocop can be run at anytime in the command line.
+
+```bash
+rubocop
 ```
 
 ### Updating Configurations
