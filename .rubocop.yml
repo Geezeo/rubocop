@@ -9,6 +9,7 @@ inherit_from:
 require:
   - rubocop-factory_bot
   - rubocop-performance
+  - rubocop-rake
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
