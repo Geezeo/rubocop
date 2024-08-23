@@ -32,5 +32,8 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
 Layout/TrailingEmptyLines:
   Enabled: false
